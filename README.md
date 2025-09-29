@@ -4,7 +4,7 @@
 
 A custom-built, responsive portfolio website created with vanilla JavaScript and Tailwind CSS to showcase my projects and skills.
 
-**[https://tanisha-portfolio-beta.vercel.app/]** ---
+**[https://tanisha-portfolio-beta.vercel.app/]** 
 
 
 ## Features
