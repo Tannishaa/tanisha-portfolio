@@ -1,6 +1,6 @@
 # Tanisha's Personal Portfolio Website
 
-![Status](https://img.shields.io/badge/status-live-brightgreen) ![License](https://img.shields.io/badge/license-MIT-blue)
+![Status](https://img.shields.io/badge/status-live-brightgreen) 
 
 A custom-built, responsive portfolio website created with vanilla JavaScript and Tailwind CSS to showcase my projects and skills.
 
