@@ -1,9 +1,8 @@
-<!DOCTYPE html>
 <html lang="en" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tanisha | Cloud Engineer & Python Developer</title>
+    <title>Tanisha | Software Developer & Cloud Enthusiast</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -12,84 +11,149 @@
         :root {
             --cursor-size: 8px;
             --cursor-glow-size: 32px;
-            --accent-purple: #9f7aea;
-            --accent-pink: #f687b3;
         }
 
         body {
             font-family: 'Space Grotesk', sans-serif;
-            background-color: #050510;
+            background-color: #0a0a1a;
             color: #e0e0e0;
             overflow-x: hidden;
-            cursor: none;
+            cursor: none; /* Hide default cursor */
         }
 
         /* Custom Cursor */
         .cursor-dot {
-            width: var(--cursor-size); height: var(--cursor-size);
-            background-color: #c4b5fd; border-radius: 50%;
-            position: fixed; top: 0; left: 0;
+            width: var(--cursor-size);
+            height: var(--cursor-size);
+            background-color: #c4b5fd;
+            border-radius: 50%;
+            position: fixed;
+            top: 0;
+            left: 0;
             transform: translate(-50%, -50%);
-            pointer-events: none; z-index: 9999;
-            transition: width 0.3s, height 0.3s, background-color 0.3s;
+            pointer-events: none;
+            z-index: 9999;
+            transition: width 0.3s, height 0.3s;
         }
 
         .cursor-glow {
-            width: var(--cursor-glow-size); height: var(--cursor-glow-size);
-            background-color: rgba(159, 122, 234, 0.15);
-            border-radius: 50%; position: fixed; top: 0; left: 0;
+            width: var(--cursor-glow-size);
+            height: var(--cursor-glow-size);
+            background-color: rgba(159, 122, 234, 0.2);
+            border-radius: 50%;
+            position: fixed;
+            top: 0;
+            left: 0;
             transform: translate(-50%, -50%);
-            pointer-events: none; z-index: 9998;
-            transition: transform 0.1s ease-out;
+            pointer-events: none;
+            z-index: 9998;
+            transition: transform 0.2s ease-out, opacity 0.3s;
+        }
+
+        body:hover .cursor-glow { opacity: 1; }
+        
+        a:hover ~ .cursor-dot, button:hover ~ .cursor-dot, .project-card:hover ~ .cursor-dot {
+            width: 32px;
+            height: 32px;
+            background-color: rgba(196, 181, 253, 0.3);
         }
 
         #star-canvas {
-            position: fixed; top: 0; left: 0;
-            width: 100%; height: 100%; z-index: -1;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
         }
 
         .gradient-text {
-            background: linear-gradient(90deg, var(--accent-purple), var(--accent-pink));
+            background: linear-gradient(90deg, #9f7aea, #f687b3);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
 
         .type-text::after {
-            content: '|'; animation: blink 0.8s infinite;
+            content: '|';
+            font-weight: 200;
+            animation: blink 0.8s infinite;
         }
 
         @keyframes blink { 50% { opacity: 0; } }
         
         .glass-effect {
-            background: rgba(15, 15, 25, 0.7);
+            background: rgba(22, 22, 37, 0.6);
             backdrop-filter: blur(12px);
-            border: 1px solid rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: background 0.3s, border 0.3s;
         }
         
-        .project-card:hover {
-            border-color: var(--accent-purple);
-            transform: translateY(-5px);
-            transition: all 0.3s ease;
+        .glass-effect:hover {
+            background: rgba(22, 22, 37, 0.8);
+            border: 1px solid rgba(255, 255, 255, 0.2);
         }
 
         .fade-in-section {
-            opacity: 0; transform: translateY(30px);
+            opacity: 0;
+            transform: translateY(30px);
             transition: opacity 0.8s ease-out, transform 0.8s ease-out;
         }
 
         .fade-in-section.is-visible {
-            opacity: 1; transform: translateY(0);
+            opacity: 1;
+            transform: translateY(0);
         }
         
-        .timeline::before {
-            content: ''; position: absolute; left: 12px; top: 5px; bottom: 5px;
-            width: 2px; background: rgba(159, 122, 234, 0.3);
+        .stagger-children > * {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+        
+        .is-visible .stagger-children > * {
+            opacity: 1;
+            transform: translateY(0);
         }
 
+        /* Staggered animation delays */
+        .is-visible .stagger-children > *:nth-child(1) { transition-delay: 0.1s; }
+        .is-visible .stagger-children > *:nth-child(2) { transition-delay: 0.2s; }
+        .is-visible .stagger-children > *:nth-child(3) { transition-delay: 0.3s; }
+        .is-visible .stagger-children > *:nth-child(4) { transition-delay: 0.4s; }
+
+
+        .cta-button:hover {
+            box-shadow: 0 0 20px rgba(159, 122, 234, 0.6), 0 0 8px rgba(159, 122, 234, 0.8);
+        }
+        
+        .skill-tag:hover {
+             transform: translateY(-5px) scale(1.05);
+             color: #c4b5fd;
+             box-shadow: 0 0 18px rgba(159, 122, 234, 0.4);
+        }
+        
+        /* Timeline styles */
+        .timeline { position: relative; }
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 12px;
+            top: 5px;
+            bottom: 5px;
+            width: 2px;
+            background: rgba(255, 255, 255, 0.15);
+        }
         .timeline-item::before {
-            content: ''; position: absolute; left: 6px; top: 11px;
-            width: 14px; height: 14px; background: #050510;
-            border: 2px solid var(--accent-purple); border-radius: 50%; z-index: 1;
+            content: '';
+            position: absolute;
+            left: 6px;
+            top: 11px;
+            width: 14px;
+            height: 14px;
+            background: #0a0a1a;
+            border: 2px solid #9f7aea;
+            border-radius: 50%;
+            z-index: 1;
         }
     </style>
 </head>
@@ -99,200 +163,378 @@
 
     <canvas id="star-canvas"></canvas>
 
+    <!-- Header -->
     <header class="glass-effect fixed top-0 left-0 right-0 z-50">
         <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
-            <a href="#" class="text-xl font-bold tracking-tighter text-white">TANISHA<span class="text-purple-500">.</span></a>
-            <div class="hidden md:flex items-center space-x-10 text-sm font-medium tracking-wide">
-                <a href="#about" class="text-gray-400 hover:text-white transition-colors">ABOUT</a>
-                <a href="#projects" class="text-gray-400 hover:text-white transition-colors">PROJECTS</a>
-                <a href="#journey" class="text-gray-400 hover:text-white transition-colors">JOURNEY</a>
-                <a href="mailto:tanisha17016@gmail.com" class="px-5 py-2 border border-purple-500/50 rounded-full hover:bg-purple-500/10 transition-all">HIRE ME</a>
+            <a href="#" class="text-xl font-bold text-white">Tanisha</a>
+            <div class="hidden md:flex items-center space-x-8">
+                <a href="#about" class="text-gray-300 hover:text-purple-400 transition-colors">About</a>
+                <a href="#journey" class="text-gray-300 hover:text-purple-400 transition-colors">Journey</a>
+                <a href="#projects" class="text-gray-300 hover:text-purple-400 transition-colors">Projects</a>
+                <a href="#contact" class="bg-purple-600 text-white px-5 py-2 rounded-md hover:bg-purple-700 transition-all cta-button">Contact</a>
             </div>
+            <button id="mobile-menu-btn" class="md:hidden text-white">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" /></svg>
+            </button>
         </nav>
+        <div id="mobile-menu" class="hidden md:hidden px-6 pb-4 space-y-2">
+            <a href="#about" class="block text-gray-300 hover:text-purple-400">About</a>
+            <a href="#journey" class="block text-gray-300 hover:text-purple-400">Journey</a>
+            <a href="#projects" class="block text-gray-300 hover:text-purple-400">Projects</a>
+            <a href="#contact" class="block bg-purple-600 text-white px-4 py-2 rounded-md mt-2">Contact</a>
+        </div>
     </header>
 
     <main class="relative z-10">
-        <section id="hero" class="min-h-screen flex items-center justify-center text-center px-4">
-            <div class="max-w-4xl">
-                <h2 class="text-purple-400 text-sm font-bold tracking-[0.3em] mb-4 uppercase">AWS Certified Cloud Practitioner</h2>
-                <h1 class="text-5xl md:text-8xl font-bold text-white leading-tight mb-6">
-                    Building the <br/>
-                    <span class="gradient-text type-text"></span>
+        <!-- Hero Section -->
+        <section id="hero" class="min-h-screen flex items-center justify-center text-center px-4 is-visible">
+            <div class="max-w-4xl stagger-children">
+                <h1 class="text-4xl md:text-6xl lg:text-7xl font-bold text-white leading-tight">
+                    Hi, I'm Tanisha.
+                    <br class="hidden md:block"/>
+                    A <span class="gradient-text type-text"></span>
                 </h1>
-                <p class="mt-6 text-lg md:text-xl text-gray-400 max-w-2xl mx-auto leading-relaxed">
-                    Final-year Computer Applications student specialized in <strong>Serverless Architectures</strong> and <strong>Backend Automation</strong>. Bridging the gap between robust code and cloud scale.
+                <p class="mt-6 text-lg md:text-xl text-gray-400 max-w-2xl mx-auto">
+                   A final-year BCA student and AWS Certified Cloud Practitioner. I bridge the gap between clean code and cloud-scale infrastructure, building apps that are as fast as they are beautiful.
                 </p>
-                <div class="mt-10 flex flex-col sm:flex-row justify-center items-center gap-6">
-                     <a href="#projects" class="bg-purple-600 text-white px-10 py-4 rounded-full font-bold hover:bg-purple-500 transition-all shadow-lg shadow-purple-500/20">
-                        EXPLORE TRILOGY
+                <div class="mt-10 flex flex-col sm:flex-row justify-center items-center gap-4">
+                     <a href="#projects" class="bg-purple-600 text-white px-8 py-3 rounded-lg font-semibold text-lg hover:bg-purple-700 transition-all cta-button w-full sm:w-auto">
+                        View My Work
                     </a>
-                    <a href="https://github.com/Tannishaa" target="_blank" class="glass-effect text-white px-10 py-4 rounded-full font-bold hover:border-purple-500/50 transition-all">
-                        GITHUB
+                    <a href="resume.pdf" target="_blank" class="glass-effect text-white px-8 py-3 rounded-lg font-semibold text-lg hover:bg-purple-900/50 transition-all w-full sm:w-auto">
+                        View Resume
                     </a>
                 </div>
             </div>
         </section>
 
-        <section id="projects" class="py-24 fade-in-section">
+        <!-- About Me Section -->
+        <section id="about" class="py-20 lg:py-32 fade-in-section">
             <div class="container mx-auto px-6">
-                <div class="text-center mb-20">
-                    <h2 class="text-3xl md:text-5xl font-bold text-white mb-4">The Winter Arc Trilogy</h2>
-                    <div class="h-1 w-20 bg-purple-600 mx-auto"></div>
-                </div>
-                
-                <div class="grid lg:grid-cols-3 gap-8">
-                    <div class="project-card glass-effect rounded-2xl p-8 flex flex-col">
-                        <span class="text-purple-500 font-bold text-xs tracking-widest uppercase mb-4">Sentiment Analysis</span>
-                        <h3 class="text-2xl font-bold text-white mb-3">Vibe-Check API</h3>
-                        <p class="text-gray-400 text-sm leading-relaxed mb-6">A serverless REST API engineered with <strong>AWS Lambda</strong> and <strong>SNS</strong>. Features sub-millisecond sentiment filtering and real-time crisis alerting.</p>
-                        <div class="flex flex-wrap gap-2 mt-auto">
-                            <span class="text-[10px] border border-white/10 px-3 py-1 rounded-full text-gray-300">Lambda</span>
-                            <span class="text-[10px] border border-white/10 px-3 py-1 rounded-full text-gray-300">API Gateway</span>
-                            <span class="text-[10px] border border-white/10 px-3 py-1 rounded-full text-gray-300">SNS</span>
+                <div class="grid md:grid-cols-5 gap-12 items-center">
+                    <div class="md:col-span-2">
+                        <div class="glass-effect rounded-lg p-2 aspect-square max-w-sm mx-auto">
+                            <img src="tani.jpg" alt="A photo of Tanisha" class="rounded-md w-full h-full object-cover">
                         </div>
                     </div>
-
-                    <div class="project-card glass-effect rounded-2xl p-8 flex flex-col">
-                        <span class="text-purple-500 font-bold text-xs tracking-widest uppercase mb-4">Financial ETL</span>
-                        <h3 class="text-2xl font-bold text-white mb-3">Bill-E Auditor</h3>
-                        <p class="text-gray-400 text-sm leading-relaxed mb-6">Automated document processing pipeline. Uses <strong>Tesseract OCR</strong> and <strong>Boto3</strong> to sanitize financial noise into structured DynamoDB records.</p>
-                        <div class="flex flex-wrap gap-2 mt-auto">
-                            <span class="text-[10px] border border-white/10 px-3 py-1 rounded-full text-gray-300">S3 Ingestion</span>
-                            <span class="text-[10px] border border-white/10 px-3 py-1 rounded-full text-gray-300">DynamoDB</span>
-                            <span class="text-[10px] border border-white/10 px-3 py-1 rounded-full text-gray-300">OCR</span>
-                        </div>
-                    </div>
-
-                    <div class="project-card glass-effect rounded-2xl p-8 flex flex-col">
-                        <span class="text-purple-500 font-bold text-xs tracking-widest uppercase mb-4">Systems Automation</span>
-                        <h3 class="text-2xl font-bold text-white mb-3">Cloud Vault</h3>
-                        <p class="text-gray-400 text-sm leading-relaxed mb-6">A multi-threaded Python daemon leveraging <strong>Watchdog</strong> to sync local filesystem events to S3 with AES-256 encryption.</p>
-                        <div class="flex flex-wrap gap-2 mt-auto">
-                            <span class="text-[10px] border border-white/10 px-3 py-1 rounded-full text-gray-300">Python</span>
-                            <span class="text-[10px] border border-white/10 px-3 py-1 rounded-full text-gray-300">Watchdog</span>
-                            <span class="text-[10px] border border-white/10 px-3 py-1 rounded-full text-gray-300">AES-256</span>
-                        </div>
+                    <div class="md:col-span-3">
+                        <h2 class="text-3xl lg:text-4xl font-bold text-white mb-6">About Me</h2>
+                        <p class="text-gray-400 mb-4 text-lg">
+                           I’m currently finishing my degree at Banasthali Vidyapith while deep-diving into the world of Cloud Automation. What truly excites me is the end-to-end journey of development, i.e., taking a rough spark of an idea and shipping it as a well-structured, cloud-hosted product.
+                        </p>
+                        <p class="text-gray-400 text-lg">
+                           When I'm not writing Python or tweaking AWS policies, I’m probably curating the perfect playlist or exploring new design trends. As I start my career, I'm eager to join a collaborative team where I can apply my skills to build something truly meaningful.
+                        </p>
                     </div>
                 </div>
             </div>
         </section>
+        
+        <!-- Tech Stack Section -->
+        <section id="tech-stack" class="py-20 lg:py-32 fade-in-section">
+    <div class="container mx-auto px-6">
+        <h2 class="text-3xl lg:text-4xl font-bold text-white text-center mb-16">Technical Arsenal</h2>
+        
+        <div class="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div class="glass-effect rounded-xl p-8 transition-all duration-300">
+                <h3 class="text-purple-400 font-bold mb-6 tracking-widest uppercase text-sm">Cloud & Backend</h3>
+                <ul class="space-y-3 text-gray-300">
+                    <li class="flex justify-between"><span>AWS Ecosystem</span><span class="text-gray-500 text-xs italic">Certified</span></li>
+                    <li class="flex justify-between"><span>Python</span><span class="text-gray-500 text-xs italic">Boto3</span></li>
+                    <li class="flex justify-between"><span>Java & C++</span><span class="text-gray-500 text-xs italic">OOP</span></li>
+                    <li class="flex justify-between"><span>DynamoDB</span><span class="text-gray-500 text-xs italic">NoSQL</span></li>
+                </ul>
+            </div>
 
-        <section id="journey" class="py-24 glass-effect">
-            <div class="container mx-auto px-6">
+            <div class="glass-effect rounded-xl p-8 transition-all duration-300">
+                <h3 class="text-purple-400 font-bold mb-6 tracking-widest uppercase text-sm">Web & Design</h3>
+                <ul class="space-y-3 text-gray-300">
+                    <li class="flex justify-between"><span>JavaScript</span><span class="text-gray-500 text-xs italic">ES6+</span></li>
+                    <li class="flex justify-between"><span>React</span><span class="text-gray-500 text-xs italic">UI</span></li>
+                    <li class="flex justify-between"><span>Tailwind CSS</span><span class="text-gray-500 text-xs italic">Design</span></li>
+                    <li class="flex justify-between"><span>Figma</span><span class="text-gray-500 text-xs italic">Prototyping</span></li>
+                </ul>
+            </div>
+
+            <div class="glass-effect rounded-xl p-8 transition-all duration-300">
+                <h3 class="text-purple-400 font-bold mb-6 tracking-widest uppercase text-sm">DevOps & Tools</h3>
+                <ul class="space-y-3 text-gray-300">
+                    <li class="flex justify-between"><span>Git & GitHub</span><span class="text-gray-500 text-xs italic">CI/CD</span></li>
+                    <li class="flex justify-between"><span>Postman</span><span class="text-gray-500 text-xs italic">API Testing</span></li>
+                    <li class="flex justify-between"><span>Linux</span><span class="text-gray-500 text-xs italic">Bash</span></li>
+                    <li class="flex justify-between"><span>Vercel/S3</span><span class="text-gray-500 text-xs italic">Deployment</span></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+
+        <!-- Journey Section -->
+        <section id="journey" class="py-20 lg:py-32 fade-in-section">
+             <div class="container mx-auto px-6">
+                <h2 class="text-3xl lg:text-4xl font-bold text-white text-center mb-16">My Journey</h2>
                 <div class="max-w-3xl mx-auto timeline">
-                    <h2 class="text-4xl font-bold text-white mb-16">The Journey</h2>
+                    <!-- Timeline Item -->
                     <div class="timeline-item relative pl-10 pb-12">
-                         <h3 class="text-xl font-bold text-purple-400 mb-1">BCA @ Banasthali Vidyapith</h3>
-                         <p class="text-gray-500 text-xs mb-3">2023–2026 | CGPA: 8.0</p>
-                         <p class="text-gray-400 text-sm">Focusing on Object Oriented Design and Data Structures. Sub-core Member of Mayukh Techfest.</p>
+                         <h3 class="text-xl font-bold text-purple-300 mb-1">Bachelors in Computer Applications</h3>
+                         <p class="text-gray-500 text-sm mb-2">Banasthali Vidyapith | 2023–2026</p>
+                         <p class="text-gray-400">Pursuing my BCA with a current CGPA of 8.0, focusing on core computer science fundamentals and software development practices.</p>
+                        <ul class="text-gray-400 list-disc list-inside space-y-1">
+                            <li>Sub-core Member, Workshop Team – Mayukh Techfest</li>
                     </div>
-                    <div class="timeline-item relative pl-10">
-                         <h3 class="text-xl font-bold text-purple-400 mb-1">AWS Certified Cloud Practitioner</h3>
-                         <p class="text-gray-500 text-xs mb-3">Issued 2025</p>
-                         <p class="text-gray-400 text-sm">Validated foundational understanding of cloud security, architecture, and serverless compute.</p>
+                     <!-- Timeline Item -->
+                    <div class="timeline-item relative pl-10 pb-12">
+                         <h3 class="text-xl font-bold text-purple-300 mb-1">AWS Certified Cloud Practitioner</h3>
+                         <p class="text-gray-500 text-sm mb-2">Certification | 2025</p>
+                         <p class="text-gray-400">Achieved foundational knowledge of AWS Cloud, services, and terminology, demonstrating a commitment to understanding modern cloud infrastructure.</p>
+                    </div>
+                     <!-- Timeline Item -->
+                    <div class="timeline-item relative pl-10 pb-12">
+                         <h3 class="text-xl font-bold text-purple-300 mb-1">Leadership & Involvement</h3>
+                         <p class="text-gray-500 text-sm mb-2">Extracurricular Activities | 2022-Present</p>
+                         <ul class="text-gray-400 list-disc list-inside space-y-1">
+                            <li>Rotary International Member</li>
+                         </ul>
                     </div>
                 </div>
-            </div>
+             </div>
         </section>
 
-        <section class="py-32 text-center fade-in-section">
-            <h2 class="text-5xl font-bold text-white mb-8">Ready to Scale?</h2>
-            <a href="mailto:tanisha17016@gmail.com" class="text-2xl font-medium underline decoration-purple-500 underline-offset-8 hover:text-purple-400 transition-colors">
-                tanisha17016@gmail.com
-            </a>
+        <!-- Projects Section -->
+        <section id="projects" class="py-20 lg:py-32 fade-in-section">
+    <div class="container mx-auto px-6">
+        <h2 class="text-3xl lg:text-4xl font-bold text-white text-center mb-12">The Winter Arc Trilogy</h2>
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 stagger-children">
+            
+            <div class="project-card glass-effect rounded-lg p-8 flex flex-col border-t-2 border-purple-500">
+                <h3 class="text-xl font-bold text-white mb-2">Vibe-Check API</h3>
+                <p class="text-gray-400 text-sm flex-grow mb-6">
+                    Serverless REST API that analyzes user feedback in real-time. Engineered cost-optimized Python logic to trigger instant <strong>AWS SNS</strong> alerts for negative sentiment, bypassing expensive ML inference costs.
+                </p>
+                <div class="flex flex-wrap gap-2 mb-6">
+                    <span class="bg-purple-900/30 text-purple-300 text-[10px] font-bold px-2 py-1 rounded">Lambda</span>
+                    <span class="bg-purple-900/30 text-purple-300 text-[10px] font-bold px-2 py-1 rounded">API Gateway</span>
+                    <span class="bg-purple-900/30 text-purple-300 text-[10px] font-bold px-2 py-1 rounded">SNS</span>
+                </div>
+                <div class="mt-auto pt-4 border-t border-white/5 flex justify-between items-center text-sm">
+                    <a href="https://github.com/Tannishaa/vibe-check" class="text-purple-400 hover:text-white transition-colors">Documentation</a>
+                    <span class="text-gray-600">AWS / Python</span>
+                </div>
+            </div>
+
+            <div class="project-card glass-effect rounded-lg p-8 flex flex-col border-t-2 border-purple-500">
+                <h3 class="text-xl font-bold text-white mb-2">Bill-E Auditor</h3>
+                <p class="text-gray-400 text-sm flex-grow mb-6">
+                    Event-driven ETL pipeline that digitizes receipts via <strong>S3 Ingestion</strong>. Uses OCR and custom validation logic to achieve 95% accuracy in extracting financial data into structured <strong>DynamoDB</strong> logs.
+                </p>
+                <div class="flex flex-wrap gap-2 mb-6">
+                    <span class="bg-purple-900/30 text-purple-300 text-[10px] font-bold px-2 py-1 rounded">OCR</span>
+                    <span class="bg-purple-900/30 text-purple-300 text-[10px] font-bold px-2 py-1 rounded">Boto3</span>
+                    <span class="bg-purple-900/30 text-purple-300 text-[10px] font-bold px-2 py-1 rounded">DynamoDB</span>
+                </div>
+                <div class="mt-auto pt-4 border-t border-white/5 flex justify-between items-center text-sm">
+                    <a href="#" class="text-purple-400 hover:text-white transition-colors">View System</a>
+                    <span class="text-gray-600">Cloud ETL</span>
+                </div>
+            </div>
+
+            <div class="project-card glass-effect rounded-lg p-8 flex flex-col border-t-2 border-purple-500">
+                <h3 class="text-xl font-bold text-white mb-2">Cloud Vault</h3>
+                <p class="text-gray-400 text-sm flex-grow mb-6">
+                    Multi-threaded background daemon developed to replicate local filesystem events to <strong>AWS S3</strong>. Implements real-time synchronization with Watchdog and automated Lifecycle Policies for cost-efficient storage.
+                </p>
+                <div class="flex flex-wrap gap-2 mb-6">
+                    <span class="bg-purple-900/30 text-purple-300 text-[10px] font-bold px-2 py-1 rounded">Watchdog</span>
+                    <span class="bg-purple-900/30 text-purple-300 text-[10px] font-bold px-2 py-1 rounded">S3</span>
+                    <span class="bg-purple-900/30 text-purple-300 text-[10px] font-bold px-2 py-1 rounded">Automation</span>
+                </div>
+                <div class="mt-auto pt-4 border-t border-white/5 flex justify-between items-center text-sm">
+                    <a href="#" class="text-purple-400 hover:text-white transition-colors">Source Code</a>
+                    <span class="text-gray-600">Systems</span>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+        <!-- Skills Section is omitted as it's integrated into other sections for a more narrative flow -->
+        
+        <!-- Contact Section -->
+        <section id="contact" class="py-20 lg:py-32 fade-in-section">
+            <div class="container mx-auto px-6 text-center">
+                <h2 class="text-3xl lg:text-4xl font-bold text-white mb-4">Let's Connect</h2>
+                <p class="text-gray-400 max-w-xl mx-auto mb-8">
+                    I'm currently seeking new opportunities. My inbox is always open, whether you have a question or just want to say hi, I'll try my best to get back to you!
+                </p>
+                <a href="mailto:tanisha17016@gmail.com" class="inline-block bg-purple-600 text-white px-8 py-3 rounded-lg font-semibold text-lg hover:bg-purple-700 transition-all cta-button">
+                    Say Hello
+                </a>
+                <div class="mt-16 flex justify-center space-x-8">
+                    <a href="https://github.com/Tannishaa" target="_blank" class="text-gray-400 hover:text-purple-400 transition-colors" aria-label="GitHub">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.5c0-1 .1-1.4-.5-2 2.8-.3 5.5-1.4 5.5-6.1 0-1.3-.5-2.4-1.3-3.2.1-.3.5-1.5-.1-3.2 0 0-1.1-.3-3.5 1.3a12.3 12.3 0 0 0-6.2 0C6.5 2.8 5.4 3.1 5.4 3.1c-.6 1.7-.2 2.9-.1 3.2-.8.8-1.3 1.9-1.3 3.2 0 4.7 2.7 5.8 5.5 6.1-.6.5-.9 1.2-.9 2.2v3.5"></path></svg>
+                    </a>
+                    <a href="https://www.linkedin.com/in/tanishas-profile/" target="_blank" class="text-gray-400 hover:text-purple-400 transition-colors" aria-label="LinkedIn">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
+                    </a>
+                </div>
+            </div>
         </section>
     </main>
 
-    <footer class="py-12 border-t border-white/5 text-center text-gray-600 text-xs tracking-widest">
-        &copy; 2025 TANISHA. BUILT WITH AWS & PASSION.
+    <footer class="py-8 border-t border-white/10">
+        <div class="container mx-auto px-6 text-center text-gray-500">
+            <p>Designed & Built by Tanisha &copy; 2025</p>
+        </div>
     </footer>
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            // Cursor Logic
-            const dot = document.querySelector('.cursor-dot');
-            const glow = document.querySelector('.cursor-glow');
+            // --- Custom Cursor ---
+            const cursorDot = document.querySelector('.cursor-dot');
+            const cursorGlow = document.querySelector('.cursor-glow');
             window.addEventListener('mousemove', e => {
-                dot.style.left = glow.style.left = `${e.clientX}px`;
-                dot.style.top = glow.style.top = `${e.clientY}px`;
+                cursorDot.style.left = e.clientX + 'px';
+                cursorDot.style.top = e.clientY + 'px';
+                cursorGlow.style.left = e.clientX + 'px';
+                cursorGlow.style.top = e.clientY + 'px';
             });
-
-            // Enlarge cursor on interactive elements
-            document.querySelectorAll('a, button, .project-card').forEach(el => {
-                el.addEventListener('mouseenter', () => dot.style.transform = 'translate(-50%, -50%) scale(4)');
-                el.addEventListener('mouseleave', () => dot.style.transform = 'translate(-50%, -50%) scale(1)');
-            });
-
-            // Star Background
+            
+            // --- Starry Background & Parallax ---
             const canvas = document.getElementById('star-canvas');
             const ctx = canvas.getContext('2d');
             let stars = [];
-            const numStars = 200;
+            const numStars = window.innerWidth > 768 ? 300 : 150; // Increased density
+            let mouse = { x: window.innerWidth / 2, y: window.innerHeight / 2 };
 
-            function resize() {
+            window.addEventListener('mousemove', (event) => {
+                mouse.x = event.clientX;
+                mouse.y = event.clientY;
+            });
+
+            function setCanvasSize() {
                 canvas.width = window.innerWidth;
-                canvas.height = window.innerHeight;
+                canvas.height = document.documentElement.scrollHeight; // Set to full page height
             }
-            window.addEventListener('resize', resize);
-            resize();
 
+            // NEW 2D Star class for a drifting effect
             class Star {
                 constructor() {
                     this.x = Math.random() * canvas.width;
                     this.y = Math.random() * canvas.height;
-                    this.z = Math.random() * canvas.width;
+                    this.size = Math.random() * 1 + 0.2; // Reduced size
+                    this.speedX = (Math.random() - 0.5) * 0.1; // Reduced speed
+                    this.speedY = (Math.random() - 0.5) * 0.1; // Reduced speed
                 }
                 update() {
-                    this.z -= 0.5;
-                    if (this.z <= 0) this.z = canvas.width;
+                    this.x += this.speedX;
+                    this.y += this.speedY;
+
+                    // Wrap stars around the screen
+                    if (this.x < 0) this.x = canvas.width;
+                    if (this.x > canvas.width) this.x = 0;
+                    if (this.y < 0) this.y = canvas.height;
+                    if (this.y > canvas.height) this.y = 0;
                 }
                 draw() {
-                    let x = (this.x - canvas.width/2) * (canvas.width/this.z) + canvas.width/2;
-                    let y = (this.y - canvas.height/2) * (canvas.width/this.z) + canvas.height/2;
-                    let s = (canvas.width/this.z) * 0.5;
-                    ctx.fillStyle = "rgba(255,255,255,0.5)";
+                    ctx.fillStyle = 'rgba(255, 255, 255, 0.7)';
                     ctx.beginPath();
-                    ctx.arc(x, y, s, 0, Math.PI*2);
+                    ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
                     ctx.fill();
                 }
             }
+            
+            // NEW animation loop with improved parallax
+             function animateStars() {
+                const centerX = window.innerWidth / 2;
+                const centerY = window.innerHeight / 2;
+                
+                // Parallax effect: move canvas in opposite direction of mouse
+                const mouseX = (mouse.x - centerX) * 0.01;
+                const mouseY = (mouse.y - centerY) * 0.01;
 
-            for(let i=0; i<numStars; i++) stars.push(new Star());
-
-            function animate() {
-                ctx.fillStyle = "#050510";
-                ctx.fillRect(0,0,canvas.width, canvas.height);
-                stars.forEach(s => { s.update(); s.draw(); });
-                requestAnimationFrame(animate);
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+                ctx.save();
+                ctx.translate(-mouseX, -mouseY);
+                
+                stars.forEach(star => {
+                    star.update();
+                    star.draw();
+                });
+                
+                ctx.restore();
+                requestAnimationFrame(animateStars);
             }
-            animate();
 
-            // Typing Animation
-            const el = document.querySelector('.type-text');
-            const strings = ["Winter Arc.", "Future of Cloud.", "Next Big Thing."];
-            let sIdx = 0, cIdx = 0, isErasing = false;
+
+            function init() {
+                setCanvasSize();
+                stars = [];
+                for (let i = 0; i < numStars; i++) {
+                    stars.push(new Star());
+                }
+                animateStars();
+            }
+            
+            init();
+            window.addEventListener('resize', init);
+            
+
+            // --- Typing Text Animation ---
+            const typeTextElement = document.querySelector('.type-text');
+            const textArray = ["Creative Developer.", "Problem Solver.", "Cloud Enthusiast."];
+            let textArrayIndex = 0;
+            let charIndex = 0;
 
             function type() {
-                const current = strings[sIdx];
-                el.textContent = isErasing ? current.substring(0, cIdx--) : current.substring(0, cIdx++);
-                
-                let speed = isErasing ? 50 : 150;
-                if(!isErasing && cIdx > current.length) { isErasing = true; speed = 2000; }
-                else if(isErasing && cIdx < 0) { isErasing = false; sIdx = (sIdx+1)%strings.length; speed = 500; }
-                
-                setTimeout(type, speed);
+                if (charIndex < textArray[textArrayIndex].length) {
+                    typeTextElement.textContent += textArray[textArrayIndex].charAt(charIndex);
+                    charIndex++;
+                    setTimeout(type, 120);
+                } else {
+                    setTimeout(erase, 2500);
+                }
             }
-            type();
 
-            // Intersection Observer
+            function erase() {
+                if (charIndex > 0) {
+                    typeTextElement.textContent = textArray[textArrayIndex].substring(0, charIndex - 1);
+                    charIndex--;
+                    setTimeout(erase, 60);
+                } else {
+                    textArrayIndex = (textArrayIndex + 1) % textArray.length;
+                    setTimeout(type, 500);
+                }
+            }
+            if (typeTextElement) { type(); }
+
+            // --- Fade-in on Scroll Animation ---
+            const sections = document.querySelectorAll('.fade-in-section');
             const observer = new IntersectionObserver(entries => {
-                entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('is-visible') });
-            }, { threshold: 0.1 });
-            document.querySelectorAll('.fade-in-section').forEach(s => observer.observe(s));
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('is-visible');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.15 });
+            sections.forEach(section => observer.observe(section));
+
+            // --- Mobile Menu Toggle ---
+            const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+            const mobileMenu = document.getElementById('mobile-menu');
+            mobileMenuBtn.addEventListener('click', () => {
+                mobileMenu.classList.toggle('hidden');
+            });
         });
     </script>
 </body>
 </html>
+
+
+
+
+
 
 
 
