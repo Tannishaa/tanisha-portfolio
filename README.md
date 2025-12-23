@@ -24,7 +24,7 @@ A custom-built, responsive portfolio website created with vanilla JavaScript and
 
 1.  Clone the repository:
     ```bash
-    git clone [https://github.com/Tannishaa/tanisha-portfolio.git](https://github.com/Tannishaa/tanisha-portfolio.git)
+    git clone https://github.com/Tannishaa/tanisha-portfolio.git
     ```
 2.  Navigate into the directory:
     ```bash
