@@ -1,10 +1,10 @@
-# Tanisha's Personal Portfolio Website
+# Tanisha's Personal Portfolio Website(This version is deprecated. View my new Cloud Engineering portfolio here:https://tanisha-cloud-portfolio.vercel.app/)
 
 ![Status](https://img.shields.io/badge/status-live-brightgreen) 
 
 A custom-built, responsive portfolio website created with vanilla JavaScript and Tailwind CSS to showcase my projects and skills.
 
-**[https://tanisha-portfolio-beta.vercel.app/]** 
+**[https://tanisha-cloud-portfolio.vercel.app/]** 
 
 
 ## Features
